@@ -1,0 +1,11 @@
+SITE.rsync_args = %w(-av --progress --rsh='ssh -l eastcore')
+SITE.user = 'eastcore'
+SITE.host = 'www.43rdrezoning.org'
+SITE.remote_dir = '/home/eastcore/sites/43rdrezoning.org/www/html'
+
+task :default => :build
+
+desc 'deploy the site to the webserver'
+task :deploy => [:build, 'deploy:rsync']
+
+# EOF
